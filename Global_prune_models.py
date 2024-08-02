@@ -55,7 +55,7 @@ for kkk in range(iterat):
             tfmot.sparsity.keras.UpdatePruningStep(),
             tfmot.sparsity.keras.PruningSummaries(log_dir=logdir),
         ]
-        perf_to_file = f"../performance_mat/FlyVisNet_pruned_global_perf_{prun_glob[nnn]}_{kkk}.mat"
+        perf_to_file = f"../performance_mat/PRUNING/FlyVisNet_pruned_global_perf_{prun_glob[nnn]}_{kkk}.mat"
         #################################
         print('#', kkk + 1, 'of', iterat, 'Global pruning with sparsity:', prun_glob[nnn])
         lr = 1e-3
