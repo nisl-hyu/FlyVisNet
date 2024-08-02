@@ -27,7 +27,7 @@ Folders:
 - **src** contains the functions and elements to generate the virtual environment.
 - **tex** contains the textures used in the virtual environment
 - **images** contains the images used in this readme file
-- **deployment** folder contains the codes for the deployment of the *FlyVisNet* on *ai-deck* GAP8, and autonomous flight algorithm on STM32.
+- **deployment** contains the codes for the deployment of the *FlyVisNet* on *ai-deck* GAP8, and autonomous flight algorithm on STM32.
 
 
 ## Deployment
