@@ -34,7 +34,7 @@ for kkk in range(10):
         HEIGHT = 244
         WIDTH = 324
         n_out = 3
-        perf_to_file = f"../performance_mat/FlyVisNet_244X324_{chosen}_perf_loop_{layer_names[nnn]}_{kkk}.mat"
+        perf_to_file = f"../performance_mat/PRUNING/FlyVisNet_244X324_{chosen}_perf_loop_{layer_names[nnn]}_{kkk}.mat"
     # TRAIN data
         input_im = np.expand_dims(data['Images'],axis=3)
         norm_images = input_im / 255
