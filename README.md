@@ -9,7 +9,7 @@ The order to execute the files and their details are as follows:
 - **Generate_moving_patterns.py** generates the moving patterns (loom, bar, and spot) dataset necessary to train and test the models.
 - **FlyVisNetH_model.py** contains the model for the resolution of input images of 244x324.
 - **FlyVisNetL_model.py** contains the model for the resolution of input images of 20x40.
-- **Train_models.py** allows to train FlyVisNetH, FlyVisNetL, Dronet, and MobileNet using the pattern dataset, and COIL-100 dataset.
+- **Train_models.py** allows to train FlyVisNetH, FlyVisNetL, Dronet, and MobileNet using the moving patterns dataset, and COIL-100 dataset.
 - **plot_accuracy_performance.py** generates the graphs for accuracy performance comparison between the different architectures.
 - **FlyVisNet_activity.py** generates the graphs for the convolution kernels, 2D feature maps, and 1D activations.
 - **FlyVisNetH_pruning_model.py** contains the model that allows pruning each layer separately.
@@ -21,8 +21,14 @@ The order to execute the files and their details are as follows:
 - **Virtual_agent_simulation.py** simulates a virtual agent in an environment generated using OpenGL. FlyVisNet allows the agent to navigate in the environment.
 
 Folders:
-- 
-- 
+- **data** location where the moving patterns dataset is generated.
+- **WEIGHTS** location where the model weights are saved after training.
+- **performance_mat** location where the .mat files containing the accuracy performance are saved after training.
+- **src** contains the functions and elements to generate the virtual environment.
+- **tex** contains the textures used in the virtual environment
+- **images** contains the images used in this readme file
+- **deployment** folder contains the codes for the deployment of the *FlyVisNet* on *ai-deck* GAP8, and autonomous flight algorithm on STM32.
+
 
 ## Deployment
 The necessary components for deployment are as follow:
