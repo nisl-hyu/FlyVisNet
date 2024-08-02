@@ -1,18 +1,27 @@
 # FlyVisNet
 This repository contains the essential code used to generate the primary results and conduct the simulations in: "FlyVisNet – An insect vision-inspired artificial neural network for the control of a nano drone".
 
+FlyVisNet is an artificial neural network (ANN) that mimics the visual system of fruit fly *Drosophila* and performs pattern recognition. It classifies images in the classes loom, bar, and spot.
 The first part of the repository describes the files necessary to generate the primary results of the study. The second part explains the deployment process for embedding FlyVisNet in the Crazyflie drone.
 
 ## Training and simulations
 The order to execute the files and their details are as follows:
-- **Generate_moving_patterns.py** generates the moving patterns dataset necessary to train and test the models.
+- **Generate_moving_patterns.py** generates the moving patterns (loom, bar, and spot) dataset necessary to train and test the models.
 - **FlyVisNetH_model.py** contains the model for the resolution of input images of 244x324.
 - **FlyVisNetL_model.py** contains the model for the resolution of input images of 20x40.
 - **Train_models.py** allows to train FlyVisNetH, FlyVisNetL, Dronet, and MobileNet using the pattern dataset, and COIL-100 dataset.
 - **plot_accuracy_performance.py** generates the graphs for accuracy performance comparison between the different architectures.
 - **FlyVisNet_activity.py** generates the graphs for the convolution kernels, 2D feature maps, and 1D activations.
 - **FlyVisNetH_pruning_model.py** contains the model that allows pruning each layer separately.
-- **Train_pruning_models.py** trains the FlyVisNetH model pruning one convolution layer per time.
+- **Train_pruned_models.py** trains the FlyVisNetH model pruning one convolution layer per time.
+- **Global_prune_models.py** prunes the FlyVisNetH model by kernel magnitude-based for different pruning sparsities.
+- **plot_pruning_accuracy.py** generates the graphs with the accuracy performance of the pruned models.
+- **FlyVisNetH_regression_model.py** contains the FlyVisNetH model including an additional output for regression.
+- **Train_regression_model.py** trains the FlyVisNetH model with an additional label corresponding with the pattern centroid position.
+- **Virtual_agent_simulation.py** simulates a virtual agent in an environment generated using OpenGL. FlyVisNet allows the agent to navigate in the environment.
+
+Folders:
+- 
 - 
 
 ## Deployment
@@ -22,7 +31,7 @@ The necessary components for deployment are as follow:
 - Flow deck v2
 - AI deck 1.1
 
-<img src="https://github.com/AngelCanelo/Insect-inspired-image-recognition-CNN/blob/main/images/necessary_components.jpg" width=40% height=40%>
+<img src="https://github.com/nisl-hyu/FlyVisNet/blob/main/images/necessary_components.jpg" width=40% height=40%>
 
 Instructions for deployment on *crazyflie 2.1* and *ai-deck*:
 - Download *bitcraze-vm* https://github.com/bitcraze/bitcraze-vm/releases
