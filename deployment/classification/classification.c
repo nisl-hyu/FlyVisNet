@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- Crazyflie AI-deck drone deployment of FlyDrosNet CNN for image recognition. Code to build and flash on AI-deck GAP8
+ Crazyflie AI-deck drone deployment of FlyVisNet. Code to build and flash on AI-deck GAP8
 
  Angel Canelo 2024.08.02
 
