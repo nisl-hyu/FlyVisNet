@@ -1,10 +1,11 @@
 /*-----------------------------------------------------------------------------
- Crazyflie drone deployment of flight control algorithm receiving inference from FlyVisNet in AI-deck.
- Code to build and flash on crazyflie STM32
+ Crazyflie drone STM32 deployment of algorithm for autonomous flight.
+ The FlyVisNet inference from AI-deck is received via UART.
+ Code to build and flash on STM32
 
  Angel Canelo 2024.08.02
 
- Code modified from Bitcraze framework of crazyflie firmware app_hellow_world example                                                   
+ Code modified from Bitcraze crazyflie-firmware app_hello_world                                                  
 -------------------------------------------------------------------------------*/
 
 #include <string.h>
