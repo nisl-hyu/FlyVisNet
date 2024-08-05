@@ -62,5 +62,5 @@ cnn_model.load_weights("../WEIGHTS/FlyVisNet_regression_weights.h5")
 converter = tf.lite.TFLiteConverter.from_keras_model(cnn_model)
 tflite_model = converter.convert()
 # save the model
-filetf = "../WEIGHTS/FlyVisNet_regression_weights.tflite"
+filetf = "../WEIGHTS/classification_q.tflite"
 open(filetf, "wb").write(tflite_model)
