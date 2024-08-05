@@ -6,7 +6,7 @@ The first part of the repository describes the files necessary to generate the p
 
 ## Training and simulations
 The order to execute the files and their details are as follows:
-- **Generate_moving_patterns.py** generates the moving patterns (loom, bar, and spot) dataset necessary to train and test the models.
+- **Generate_moving_patterns.py** generates the moving patterns (loom, bar, and spot) dataset necessary to train and test the models as .mat files.
 - **FlyVisNetH_model.py** contains the model for the resolution of input images of 244x324.
 - **FlyVisNetL_model.py** contains the model for the resolution of input images of 20x40.
 - **Train_models.py** allows to train FlyVisNetH, FlyVisNetL, Dronet, and MobileNet using the moving patterns dataset, and COIL-100 dataset.
@@ -17,7 +17,7 @@ The order to execute the files and their details are as follows:
 - **Global_prune_models.py** prunes the FlyVisNetH model by kernel magnitude-based for different pruning sparsities.
 - **plot_pruning_accuracy.py** generates the graphs with the accuracy performance of the pruned models.
 - **FlyVisNetH_regression_model.py** contains the FlyVisNetH model including an additional output for regression.
-- **Train_regression_model.py** trains the FlyVisNetH model with an additional label corresponding with the pattern centroid position.
+- **Train_regression_model.py** trains the FlyVisNetH model with an additional label corresponding with the pattern centroid position and generates a TFLite model classification_q.tflite.
 - **Virtual_agent_simulation.py** simulates a virtual agent in an environment generated using OpenGL. FlyVisNet allows the agent to navigate in the environment.
 
 Folders:
@@ -45,6 +45,9 @@ Instructions for deployment on *crazyflie 2.1* and *ai-deck*:
 https://github.com/bitcraze/aideck-gap8-examples <br/>
 https://github.com/bitcraze/crazyflie-firmware
 - Substitute the folder *classification* in `aideck-gap8-examples/examples/ai/` by the provided by us in `deployment/classification`
+- Make a folder with name `samples` inside the folder `classification`.
+- From the generated test dataset .mat file, save the frames as .jpg and put them in the `samples` folder. You need to share a folder from your PC to the VM to pass those frames.
+- Put the generated 
 - Substitute the folder *app_hello_world* in `crazyflie-firmware/examples/` by the provided by us in `deployment/app_hello_world`
 
 - Build and flash on *ai-deck* GAP8. In folder `aideck-gap8-examples`:
