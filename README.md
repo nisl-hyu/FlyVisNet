@@ -47,8 +47,7 @@ https://github.com/bitcraze/crazyflie-firmware
 - Substitute the folder *classification* in `aideck-gap8-examples/examples/ai/` by the provided by us in `deployment/classification`
 - Make a folder with name `samples` inside the folder `classification`.
 - From the generated test dataset .mat file, save the frames as .jpg and put them in the `samples` folder. You need to share a folder from your PC to the VM to pass those frames.
-- Put the generated 
-- Substitute the folder *app_hello_world* in `crazyflie-firmware/examples/` by the provided by us in `deployment/app_hello_world`
+- Put the generated `WEIGHTS/classification_q.tflite` in `aideck-gap8-examples/examples/ai/classification/model/`
 
 - Build and flash on *ai-deck* GAP8. In folder `aideck-gap8-examples`:
 ```
@@ -57,6 +56,8 @@ $ docker run --rm -v ${PWD}:/module aideck-with-autotiler tools/build/make-examp
 ```
 $ cfloader flash examples/ai/classification/BUILD/GAP8_V2/GCC_RISCV_FREERTOS/target.board.devices.flash.img deck-bcAI:gap8-fw -w radio://0/80/2M/E7E7E7E7E7
 ```
+- Substitute the folder *app_hello_world* in `crazyflie-firmware/examples/` by the provided by us in `deployment/app_hello_world`
+- From `aideck-gap8-examples/examples/ai/classification/BUILD_MODEL_SQ8BIT/` copy the file `classificationInfo.h` in `crazyflie-firmware/examples/app_hello_world/src/`
 - Build and flash on *crazyflie* STM32. In folder `crazyflie-firmware/examples/app_hello_world`:
 ```
 $ make all clean
