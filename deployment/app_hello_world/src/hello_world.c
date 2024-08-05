@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------
- Copyright (C) 2020-2021 ETH Zurich, Switzerland, University of Bologna, Italy.
- All rights reserved.                                                           
-                                                                                                                                                                                                         
- File:    main.c   
- Author:  Vlad Niculescu      <vladn@iis.ee.ethz.ch>                           
- Date:    15.03.2021                                                           
+ Crazyflie drone deployment of flight control algorithm receiving inference from FlyVisNet in AI-deck.
+ Code to build and flash on crazyflie STM32
+
+ Angel Canelo 2024.08.02
+
+ Code modified from Bitcraze framework of crazyflie firmware app_hellow_world example                                                   
 -------------------------------------------------------------------------------*/
 
 #include <string.h>
@@ -40,8 +40,6 @@ static void setHoverSetpoint(setpoint_t *setpoint, float vx, float vy, float z, 
 
   setpoint->mode.yaw = modeVelocity;
   setpoint->attitudeRate.yaw = yawrate;
-  // setpoint->mode.yaw = modeAbs;
-  // setpoint->attitude.yaw = yawrate;
 
   setpoint->mode.x = modeVelocity;
   setpoint->mode.y = modeVelocity;
@@ -60,7 +58,6 @@ typedef enum {
 
 static State state = idle;
 
-//static const float velMax = 1.0f;
 static const float height_sp = 0.2f;
 static float height_sp2 = 0.3f;
 
@@ -95,7 +92,6 @@ void appMain()
 	static setpoint_t setpoint;
 
   	vTaskDelay(M2T(10000));
-	//logVarId_t idDown = logGetVarId("range", "zrange");  
   	paramVarId_t idPositioningDeck = paramGetVarId("deck", "bcFlow2");
 
 	USART_DMA_Start(115200, aideckRxBuffer, BUFFERSIZE);
@@ -109,8 +105,6 @@ void appMain()
 		uint8_t positioningInit = paramGetUint(idPositioningDeck);
 		if (state == unlocked)
 		{
-			//uint16_t down = logGetUint(idDown);
-      		//double c_alt = down/1000.0f;
 			if (finres==3 && usecTimestamp()/1000000<=chtime2+2) {	// Initial hovering
 				setHoverSetpoint(&setpoint, 0, 0, height_sp, 0);
 				commanderSetSetpoint(&setpoint, 3);				
@@ -163,13 +157,11 @@ void appMain()
 							else if (finres==1)
 							{
 								DEBUG_PRINT("Rectangle: %d\n", finres);
-								//chtime = usecTimestamp()/1000000;
                                 finres = 4;
 							}
 							else if (finres==2)
 							{
 								DEBUG_PRINT("Square: %d\n", finres);
-								//chtime = usecTimestamp()/1000000;
                                 finres = 4;
 							}
 						}
@@ -211,7 +203,6 @@ void appMain()
 				}
 				else if (finres==1 && usecTimestamp()/1000000>chtime+2.5f){
 					finres = 4;
-					//ddcheck = 1;
 					chtime = usecTimestamp()/1000000;
                     turn_r = 1;
 				}
